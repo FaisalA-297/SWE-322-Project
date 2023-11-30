@@ -1,16 +1,6 @@
 <?php
-// Establish database connection (replace placeholders with your actual credentials)
-$servername = "your_server";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_database";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'db_config.ph';
 
 // Retrieve user input
 $username = $_POST['username'];
@@ -28,7 +18,7 @@ if ($result->num_rows > 0) {
     // User found, set session and redirect to display page
     session_start();
     $_SESSION['username'] = $username;
-    header("Location: display_page.php");
+    header("Location: account_page.php");
 } else {
     // Invalid credentials, redirect back to login page
     header("Location: login.php");
